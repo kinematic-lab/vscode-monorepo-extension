@@ -1,0 +1,38 @@
+name: Frontend / Build & Deploy
+
+on:
+    push:
+        branches: ['main']
+    pull_request:
+        branches: ['main']
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-20.04
+
+        strategy:
+            matrix:
+                node-version: [18]
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
+            - uses: pnpm/action-setup@v2
+              with:
+                  version: 7
+
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'pnpm'
+
+            - name: Install dependencies
+              run: pnpm install
+
+            - name: Linting
+              run: pnpm run lint
