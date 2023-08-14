@@ -27,7 +27,7 @@
 		"@commitlint/config-conventional": "^17.4.4",
 		"@kinematic-lab/eslint-config-typescript": "^0.0.3",
 		"@kinematic-lab/typescript-config": "^0.1.0",
-		"@types/node": "20.2.5",
+		"@types/node": "20.5.0",
 		"@types/vscode": "^1.80.0",
 		"commitlint": "^17.4.4",
 		"eslint": "^8.41.0",
