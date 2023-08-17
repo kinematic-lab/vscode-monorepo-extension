@@ -30,14 +30,16 @@ export default class Directory {
 			return new Directory(path.dirname(filePath));
 		}
 
-		return depth
-			? this.findInAncestors({
-					name,
-					directory,
-					validator,
-					depth: depth - 1,
-			  })
-			: this;
+		if (depth) {
+			return this.findInAncestors({
+				name,
+				directory,
+				validator,
+				depth: depth - 1,
+			});
+		}
+
+		return this;
 	}
 
 	public findInChildren(options: DirectoryOptions): Directory[] {
