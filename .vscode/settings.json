@@ -1,5 +1,4 @@
 {
-	"files.exclude": { "out": true },
 	"search.exclude": { "out": true },
 	"typescript.tsc.autoDetect": "off"
 }
