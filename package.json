@@ -1,6 +1,8 @@
 {
-	"name": "@kinematic-lab/vscode-monorepo-extension",
+	"name": "vscode-monorepo",
+	"displayName": "Monorepo Explorer",
 	"main": "./dist/index.js",
+	"icon": "./media/icon-display.png",
 	"private": true,
 	"version": "0.0.1",
 	"repository": {
@@ -11,10 +13,11 @@
 		"vscode": "^1.80.0"
 	},
 	"scripts": {
-		"lint": "prettier --write --list-different . && eslint --ext \".ts,.vue\" . --fix",
 		"prepare": "husky install",
-		"compile": "tsc -p ./ --outDir ./dist",
-		"watch": "tsc -watch -p ./ --outDir ./dist",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"lint": "prettier --write --list-different . && eslint --ext \".ts,.vue\" . --fix",
+		"package": "vsce package --out \"./bin/\"",
 		"pretest": "pnpm run compile && pnpm run lint",
 		"vscode:prepublish": "pnpm run compile",
 		"changeset:create": "pnpm changeset",
@@ -48,7 +51,7 @@
 				{
 					"id": "labOverview",
 					"name": "Kinematic Lab",
-					"icon": "./icon.svg"
+					"icon": "./media/icon.svg"
 				}
 			]
 		},

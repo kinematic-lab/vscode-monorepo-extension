@@ -1,7 +1,7 @@
-# @kinematic-lab/vscode-monorepo-extension
+# vscode-extension
 
 ## 0.0.1
 
 ### Patch Changes
 
--   Initial release.
+-   Initial release!
