@@ -4,7 +4,7 @@
 	"main": "./dist/index.js",
 	"icon": "./media/icon-display.png",
 	"private": true,
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/kinematic-lab/vscode-monorepo-extension.git"
@@ -17,7 +17,7 @@
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"lint": "prettier --write --list-different . && eslint --ext \".ts,.vue\" . --fix",
-		"publish": "pnpm changeset:create && pnpm changeset:version && pnpm install && pnpm package",
+		"release": "pnpm changeset:create && pnpm changeset:version && pnpm install && pnpm package",
 		"package": "vsce package --out \"./bin/\"",
 		"pretest": "pnpm run compile && pnpm run lint",
 		"vscode:prepublish": "pnpm run compile",
