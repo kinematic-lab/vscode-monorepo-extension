@@ -8,7 +8,13 @@ export default class Provider implements vscode.TreeDataProvider<Module> {
 	public rootDirectory?: Directory;
 	public rootConfiguration?: Config;
 
+	private _onDidChangeTreeData;
+	public readonly onDidChangeTreeData;
+
 	constructor(workspaceRoot?: string) {
+		this._onDidChangeTreeData = new vscode.EventEmitter<Module | void>();
+		this.onDidChangeTreeData = this._onDidChangeTreeData.event;
+
 		if (workspaceRoot) {
 			const validator = (c: string) => Boolean(JSON.parse(c).workspaces);
 			const d = new Directory(workspaceRoot);
@@ -30,6 +36,10 @@ export default class Provider implements vscode.TreeDataProvider<Module> {
 				? this.getWorkspaceElements(element)
 				: this.getRootElements()
 		);
+	}
+
+	public refresh(): void {
+		this._onDidChangeTreeData?.fire();
 	}
 
 	private getRootElements(): Module[] {

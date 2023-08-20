@@ -4,13 +4,26 @@ import Commands from './commands';
 
 const root = vscode.workspace.workspaceFolders?.[0].uri.fsPath;
 const provider = new Provider(root);
-
 vscode.window.registerTreeDataProvider('labOverview', provider);
+
+/**
+ * Provider Commands
+ */
+vscode.commands.registerCommand('labOverview.refresh', () =>
+	provider.refresh()
+);
+
+/**
+ * Local Commands
+ */
 vscode.commands.registerCommand('labOverview.runBuild', Commands.runBuild);
 vscode.commands.registerCommand('labOverview.runDev', Commands.runDev);
 vscode.commands.registerCommand('labOverview.openReadme', Commands.openReadme);
 vscode.commands.registerCommand('labOverview.openGithub', Commands.openGithub);
 
+/**
+ * Root Commands
+ */
 vscode.commands.registerCommand(
 	'labOverview.runBuildRoot',
 	Commands.runBuildRoot.bind(null, provider)

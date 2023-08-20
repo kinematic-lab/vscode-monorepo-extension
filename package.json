@@ -17,6 +17,7 @@
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"lint": "prettier --write --list-different . && eslint --ext \".ts,.vue\" . --fix",
+		"publish": "pnpm changeset:create && pnpm changeset:version && pnpm install && pnpm package",
 		"package": "vsce package --out \"./bin/\"",
 		"pretest": "pnpm run compile && pnpm run lint",
 		"vscode:prepublish": "pnpm run compile",
@@ -56,6 +57,11 @@
 			]
 		},
 		"commands": [
+			{
+				"command": "labOverview.refresh",
+				"title": "Refresh",
+				"icon": "$(refresh)"
+			},
 			{
 				"command": "labOverview.runBuildRoot",
 				"title": "Build",
@@ -99,6 +105,11 @@
 		],
 		"menus": {
 			"view/title": [
+				{
+					"command": "labOverview.refresh",
+					"when": "view == labOverview",
+					"group": "navigation"
+				},
 				{
 					"command": "labOverview.runBuildRoot",
 					"when": "view == labOverview",
