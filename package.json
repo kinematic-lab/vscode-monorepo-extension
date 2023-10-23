@@ -34,7 +34,7 @@
 		"@types/node": "20.2.5",
 		"@types/vscode": "^1.80.0",
 		"commitlint": "^17.4.4",
-		"eslint": "^8.41.0",
+		"eslint": "^8.52.0",
 		"husky": "^8.0.2",
 		"lint-staged": "^13.2.0",
 		"prettier": "^2.7.1",
